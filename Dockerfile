@@ -36,10 +36,6 @@ RUN set -x \
 		+app_update ${STEAMAPPID} validate \
 		+quit"
 
-# Copy ini and maps files
-#ADD config/Engine.ini config/Game.ini $STEAMAPPDIR/Mordhau/Saved/Config/LinuxServer/
-#ADD maps $STEAMAPPDIR/Mordhau/Content/Mordhau/Maps/
-
 ENV SERVER_PORT=7777 \
 	SERVER_QUERYPORT=27015 \
 	SERVER_BEACONPORT=15000
@@ -53,7 +49,8 @@ VOLUME $STEAMAPPDIR
 
 # Set Entrypoint
 # 1. Update server
-# 2. Start the server
+# 2. Copy config and map files
+# 3. Start the server
 ENTRYPOINT ${STEAMCMDDIR}/steamcmd.sh \
 			+login anonymous +force_install_dir ${STEAMAPPDIR} +app_update ${STEAMAPPID} +quit \
 		# copy files from /tmp

@@ -37,11 +37,8 @@ RUN set -x \
 		+quit"
 
 # Copy ini and maps files
-ADD Engine.ini Game.ini $STEAMAPPDIR/Mordhau/Saved/Config/LinuxServer/
-ADD Maps/ $STEAMAPPDIR/Mordhau/Content/Mordhau/Maps/
-
-RUN chown steam $STEAMAPPDIR/Mordhau/Saved/Config/LinuxServer/Engine.ini \
-    && chown steam $STEAMAPPDIR/Mordhau/Saved/Config/LinuxServer/Game.ini
+#ADD config/Engine.ini config/Game.ini $STEAMAPPDIR/Mordhau/Saved/Config/LinuxServer/
+#ADD maps $STEAMAPPDIR/Mordhau/Content/Mordhau/Maps/
 
 ENV SERVER_PORT=7777 \
 	SERVER_QUERYPORT=27015 \
@@ -59,6 +56,9 @@ VOLUME $STEAMAPPDIR
 # 2. Start the server
 ENTRYPOINT ${STEAMCMDDIR}/steamcmd.sh \
 			+login anonymous +force_install_dir ${STEAMAPPDIR} +app_update ${STEAMAPPID} +quit \
+		# copy files from /tmp
+		&& cp -vr /tmp/mordhau/config/* ${STEAMAPPDIR}/Mordhau/Saved/Config/LinuxServer/ \
+		&& cp -vr /tmp/mordhau/maps/* ${STEAMAPPDIR}/Mordhau/Content/Mordhau/Maps/ \
 		&& ${STEAMAPPDIR}/MordhauServer.sh -log \
 			-Port=$SERVER_PORT -QueryPort=$SERVER_QUERYPORT -BeaconPort=$SERVER_BEACONPORT \
 			-GAMEINI=${STEAMAPPDIR}/Mordhau/Saved/Config/LinuxServer/Game.ini \

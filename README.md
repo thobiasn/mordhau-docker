@@ -11,9 +11,10 @@ changes to files in either of these directories will be applied on container res
 Adjust the config files found at `/config` and add any custom maps (unzipped) to the `maps` folder.
 
 ```
+git clone https://github.com/thobiasn/mordhau-docker && cd mordhau-docker
+
 docker build -t mordhau-docker .
-```
-```
+
 docker run -d --net=host \
     -v "$PWD":/tmp/mordhau \
     --name=mordhau-docker \

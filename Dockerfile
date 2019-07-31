@@ -3,8 +3,6 @@
 ###########################################################
 FROM cm2network/steamcmd:root
 
-LABEL maintainer="walentinlamonos@gmail.com"
-
 ENV STEAMAPPID 629800
 ENV STEAMAPPDIR /home/steam/mordhau-dedicated
 
@@ -29,8 +27,6 @@ RUN set -x \
 	&& apt-get autoremove -y \
 	&& rm -rf /var/lib/apt/lists/* \
 # Run Steamcmd and install Mordhau
-# Write Server Config
-# {{SERVER_PW}}, {{SERVER_ADMINPW}} and {{SERVER_MAXPLAYERS}} gets replaced by entrypoint
 	&& su steam -c \
 	    "mkdir -p ${STEAMAPPDIR}/Mordhau/Saved/Config/LinuxServer/ \
 	    mkdir -p ${STEAMAPPDIR}/Mordhau/Content/Mordhau/Maps \

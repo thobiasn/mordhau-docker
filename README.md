@@ -4,7 +4,7 @@ directories are shared with the container and copied to their respective directo
 changes to files in either of these directories will be applied on container restart.
 
 ## Custom maps
-* You can find custom maps to use here: https://github.com/MordhauMappingModding/MapsFiles
+* You can find custom maps to use here: https://mordhau.mod.io/
 * The modding community can be found here: https://discord.gg/ZbMnPMY
 
 # How to use

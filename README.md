@@ -21,4 +21,17 @@ docker run -d --net=host \
     mordhau-docker
 ```
 
+## Specifying ports at runtime (for running multiple containers)
+
+```
+docker run -d --net=host \
+    -v "$PWD":/tmp/mordhau \
+    --name=mordhau-docker \
+    --env SERVER_PORT=7777 \
+    --env SERVER_QUERYPORT=27015 \
+    --env SERVER_BEACONPORT=15000 \
+    --env SERVER_RCONPORT=0 \
+    mordhau-docker
+```
+
 To update config files or add new mods, simply make the changes and restart the container.

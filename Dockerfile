@@ -45,7 +45,6 @@ ENTRYPOINT ${STEAMCMDDIR}/steamcmd.sh \
 			-Port=$SERVER_PORT -QueryPort=$SERVER_QUERYPORT -BeaconPort=$SERVER_BEACONPORT \
 			-GAMEINI=${STEAMAPPDIR}/Mordhau/Saved/Config/LinuxServer/Game.ini \
 			-ENGINEINI=${STEAMAPPDIR}/Mordhau/Saved/Config/LinuxServer/Engine.ini
-	
 
 # Expose ports
 ENV ${SERVER_PORT}

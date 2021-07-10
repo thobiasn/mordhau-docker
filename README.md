@@ -8,11 +8,13 @@ changes to files in either of these directories will be applied on container res
 * The modding community can be found here: https://discord.gg/ZbMnPMY
 
 # How to use
+```
+git clone https://github.com/thobiasn/mordhau-docker && cd mordhau-docker
+```
+
 Adjust the config files found at `/config` and add any custom pak files to the `/paks` folder.
 
 ```
-git clone https://github.com/thobiasn/mordhau-docker && cd mordhau-docker
-
 docker build -t mordhau-docker .
 
 docker run -d --net=host \

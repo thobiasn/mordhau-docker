@@ -42,7 +42,7 @@ ENTRYPOINT ${STEAMCMDDIR}/steamcmd.sh \
 	&& cp -vr /tmp/mordhau/config/* ${STEAMAPPDIR}/Mordhau/Saved/Config/LinuxServer/ \
 	&& cp -vr /tmp/mordhau/paks/* ${STEAMAPPDIR}/Mordhau/Content/Paks/ \
 	&& ${STEAMAPPDIR}/MordhauServer.sh -log \
-			-Port=$SERVER_PORT -QueryPort=$SERVER_QUERYPORT -BeaconPort=$SERVER_BEACONPORT \
+			-Port=$SERVER_PORT -RconPort=$SERVER_RCONPORT -QueryPort=$SERVER_QUERYPORT -BeaconPort=$SERVER_BEACONPORT \
 			-GAMEINI=${STEAMAPPDIR}/Mordhau/Saved/Config/LinuxServer/Game.ini \
 			-ENGINEINI=${STEAMAPPDIR}/Mordhau/Saved/Config/LinuxServer/Engine.ini
 

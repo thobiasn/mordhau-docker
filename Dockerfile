@@ -13,6 +13,7 @@ ENV SERVER_PORT=7777
 ENV SERVER_QUERYPORT=27015 
 ENV SERVER_BEACONPORT=15000
 ENV SERVER_RCONPORT=0
+ENV DEFAULT_MAP=FFA_Contraband
 
 # install dependencies
 RUN apt-get update \
@@ -41,7 +42,7 @@ ENTRYPOINT ${STEAMCMDDIR}/steamcmd.sh \
 		+quit \
 	&& cp -vr /tmp/mordhau/config/* ${STEAMAPPDIR}/Mordhau/Saved/Config/LinuxServer/ \
 	&& cp -vr /tmp/mordhau/paks/* ${STEAMAPPDIR}/Mordhau/Content/Paks/ \
-	&& ${STEAMAPPDIR}/MordhauServer.sh -log \
+	&& ${STEAMAPPDIR}/MordhauServer.sh ${DEFAULT_MAP} -log \
 			-Port=$SERVER_PORT -QueryPort=$SERVER_QUERYPORT -BeaconPort=$SERVER_BEACONPORT \
 			-GAMEINI=${STEAMAPPDIR}/Mordhau/Saved/Config/LinuxServer/Game.ini \
 			-ENGINEINI=${STEAMAPPDIR}/Mordhau/Saved/Config/LinuxServer/Engine.ini
